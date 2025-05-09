@@ -1,27 +1,27 @@
 import React from "react";
-import { Button } from "@/components/ui/button";
-import {
-  anton,
-  fugaz_one,
-  lilita_one,
-  sanchez,
-  teko,
-} from "@/components/google-fonts";
+import { anton, fugaz_one, sanchez } from "@/components/google-fonts"; // Removed unused fonts
 import Link from "next/link";
+import Image from "next/image";
 
-function page() {
+function Page() {
   return (
     <div className="flex flex-col bg-amber-400">
       <header className="flex justify-center items-center min-h-screen">
         <div className="flex flex-col gap-4 items-center">
           <div className="avatar">
             <div className="w-32 rounded-full">
-              <img src="profile.jpg" />
+              {/* Replaced <img> with Next.js <Image /> */}
+              <Image
+                src="/profile.jpg"
+                alt="Lawrence's profile picture"
+                width={128}
+                height={128}
+              />
             </div>
           </div>
 
           <h1 className="text-4xl lg:text-5xl flex flex-col">
-            <span className={sanchez.className}>Hi I'm</span>
+            <span className={sanchez.className}>Hi I&apos;m</span>
             <span className={anton.className}>Lawrence Jeremy Poliquit</span>
           </h1>
 
@@ -35,15 +35,16 @@ function page() {
           <div className="flex flex-col justify-center gap-12 max-w-md lg:max-w-lg">
             <h6 className="flex flex-col gap-1 mt-12">
               <span className="font-bold">Proverbs 21:19</span>
+              {/* Escaped quotes to fix `react/no-unescaped-entities` */}
               <span className="italic ms-6">
-                "It is better to dwell in the wilderness than with a contentious
-                and angry woman."
+                &quot;It is better to dwell in the wilderness than with a
+                contentious and angry woman.&quot;
               </span>
             </h6>
+
             {/* Social Icons */}
             <div className="flex justify-center gap-6">
               {/* Facebook */}
-
               <Link href="https://www.facebook.com/jeremy.poliquit">
                 <button className="btn btn-circle bg-[#1A77F2] text-white border-[#005fd8]">
                   <svg
@@ -84,4 +85,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
