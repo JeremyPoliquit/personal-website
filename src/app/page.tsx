@@ -1,7 +1,15 @@
-import React from "react";
 import { anton, fugaz_one, sanchez } from "@/components/google-fonts"; // Removed unused fonts
-import Link from "next/link";
 import Image from "next/image";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+  HobbiesCard,
+  IntroductionCard,
+  RelationshipCard,
+} from "@/components/about-me";
+import { BibleVerse, GetStarted, SocialLinks } from "@/components/header";
+import { Badge } from "@/components/ui/badge";
+import { College, Elementary, JuniorHigh, SeniorHigh } from "@/components/education";
 
 function Page() {
   return (
@@ -33,54 +41,104 @@ function Page() {
 
           {/* Bible Verse */}
           <div className="flex flex-col justify-center gap-12 max-w-md lg:max-w-lg">
-            <h6 className="flex flex-col gap-1 mt-12">
-              <span className="font-bold">Proverbs 21:19</span>
-              {/* Escaped quotes to fix `react/no-unescaped-entities` */}
-              <span className="italic ms-6">
-                &quot;It is better to dwell in the wilderness than with a
-                contentious and angry woman.&quot;
-              </span>
-            </h6>
+            <div className="flex flex-col gap-1 mt-12">
+              <BibleVerse />
+            </div>
 
             {/* Social Icons */}
             <div className="flex justify-center gap-6">
-              {/* Facebook */}
-              <Link href="https://www.facebook.com/jeremy.poliquit">
-                <button className="btn btn-circle bg-[#1A77F2] text-white border-[#005fd8]">
-                  <svg
-                    aria-label="Facebook logo"
-                    width="16"
-                    height="16"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 32 32"
-                  >
-                    <path
-                      fill="white"
-                      d="M8 12h5V8c0-6 4-7 11-6v5c-4 0-5 0-5 3v2h5l-1 6h-4v12h-6V18H8z"
-                    ></path>
-                  </svg>
-                </button>
-              </Link>
+              <SocialLinks />
+            </div>
 
-              {/* Instagram */}
-              <button className="btn btn-circle bg-black text-white border-black">
-                <svg
-                  aria-label="X logo"
-                  width="16"
-                  height="12"
-                  viewBox="0 0 300 271"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill="currentColor"
-                    d="m236 0h46l-101 115 118 156h-92.6l-72.5-94.8-83 94.8h-46l107-123-113-148h94.9l65.5 86.6zm-16.1 244h25.5l-165-218h-27.4z"
-                  />
-                </svg>
-              </button>
+            {/* Get Started */}
+            <div className="flex justify-center">
+              <GetStarted />
             </div>
           </div>
         </div>
       </header>
+
+      {/* About section */}
+      <section className="flex flex-col min-h-screen mx-6">
+        <h1 className="text-center text-2xl font-extrabold mb-4">About Me</h1>
+        <Card>
+          {/* Introduction */}
+          <CardHeader>
+            <CardTitle>Introduction</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <IntroductionCard />
+          </CardContent>
+
+          {/* Hobbies */}
+          <CardHeader>
+            <CardTitle>Hobbies</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ScrollArea className="h-[150px]">
+              <HobbiesCard />
+            </ScrollArea>
+          </CardContent>
+
+          {/* Relationship */}
+          <CardHeader>
+            <CardTitle>Relationship</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ScrollArea className="h-[150px]">
+              <RelationshipCard />
+            </ScrollArea>
+          </CardContent>
+        </Card>
+      </section>
+
+      {/* Education */}
+      <section className="flex flex-col min-h-screen mx-8">
+        <h1 className="text-center text-2xl font-extrabold mb-4">Education</h1>
+        <div className="flex justify-center">
+          <div className="flex flex-col gap-4">
+            {/* Elementary */}
+            <div className="grid grid-cols-2 w-full">
+              <div>
+                <Badge>Elementary</Badge>
+              </div>
+              <div>
+                <Elementary />
+              </div>
+            </div>
+
+            {/* Junior High */}
+            <div className="grid grid-cols-2 w-full">
+              <div>
+                <Badge>Junior High</Badge>
+              </div>
+              <div>
+                <JuniorHigh />
+              </div>
+            </div>
+
+            {/* Senior High */}
+            <div className="grid grid-cols-2 w-full">
+              <div>
+                <Badge>Senior High</Badge>
+              </div>
+              <div>
+                <SeniorHigh />
+              </div>
+            </div>
+
+            {/* College */}
+            <div className="grid grid-cols-2 w-full">
+              <div>
+                <Badge>College</Badge>
+              </div>
+              <div>
+                <College />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
